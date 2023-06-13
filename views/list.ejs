@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/square.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="container-grid">
+        <div id="heading">
+            <h1><a href="/">WhatToDo</a></h1>
+            <p>Take charge of your todos with <strong>WhatToDo</strong></p>
+            <p style="color: white; text-align: center;">© Ayush Jha</p>
+
+        </div>
+        <div class="box">
+            <div class="date-container">
+                <a href="/"><button type="button">< </button></a>
+                <h1>
+                    <%= TITLE %>
+                </h1>
+            </div>
+
+            <div class="todo-container">
+
+
+                <% ITEMS.forEach((item)=>{ %>
+                    <div class="item">
+                        <form action="/rm/delete" method="post">
+                            <input type="checkbox" name="checkbox" value="<%= item._id%>" onchange="this.form.submit()">
+                            <p>
+                                <%= item.name %>
+                            </p>
+
+                            <input type="hidden" name="listName" value="<%= TITLE%>">
+                        </form>
+
+                    </div>
+                    <% }); %>
+                        <form method="post" class="item">
+                            <% if (ITEMS.length>=7){ %>
+                                <input type="text" name="userInput" id="" placeholder="ComeOn Bro Chill!"
+                                    autocomplete="off" required disabled>
+                                <% }else{ %>
+                                    <input type="text" name="userInput" id="" placeholder="Create New Category"
+                                        autocomplete="off" required>
+                                    <button type="submit" name="list" value=<%=TITLE %> >+</button>
+                                    <% } %>
+                        </form>
+            </div>
+        </div>
+</body>
+
+</html>
