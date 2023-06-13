@@ -7,9 +7,4 @@ let options = {
 }
 let day = today.toLocaleDateString("en-US",options)
 // CJS
-// module.exports.Day = day;
 exports.Day = day;
-
-// ESM
-// export default day  -- import day from "...."
-// export {day as DAY} -- import {DAY} from "..."
